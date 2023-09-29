@@ -1,0 +1,18 @@
+import math
+
+count = 0
+maximum = - int(math.pow(10, 8))
+
+for i in range(1, 5):
+    x = int(input())
+    if x % 2 != 0:
+        count += 1
+        if x > maximum:
+            maximum = x
+
+
+if count > 0:
+    print(count)
+    print(maximum)
+else:
+    print('NO')
