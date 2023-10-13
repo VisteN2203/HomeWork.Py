@@ -78,24 +78,31 @@ def is_ambiguous_characters():
 	while True:
 		print("Исключать ли неоднозначные символы il1Lo0O; д = да, н = нет")
 		response = str(input())
+
 		if response == "д":
 			flag_is_ambiguous_characters = True
 			return flag_is_ambiguous_characters
+
 		elif response == "н":
 			flag_is_ambiguous_characters = False
 			return flag_is_ambiguous_characters
+
 		else:
 			continue
 
 
 def data_generation():
 	list = []
+
 	if flag_is_number == True:
 		list.append([48, 57])
+
 	if flag_is_uppercase_letters == True:
 		list.append([65, 90])
+
 	if flag_is_lowercase_letters == True:
 		list.append([97, 122])
+
 	if flag_is_special_characters == True:
 		list.append([[33, 47], [58, 64], [91, 96], [123, 126]])
 
@@ -103,10 +110,11 @@ def data_generation():
 
 
 chars = ""
-bad_characters = [105,108,49,76,111,48,79]
+bad_characters = [105, 108, 49, 76, 111, 48, 79]
 start()
 list_password = []
 num_of_passwords = count_of_passwords()
+
 for i in range(1, num_of_passwords + 1):
 	len_password = password_length(i)
 	flag_is_number = is_numbers()
@@ -115,9 +123,11 @@ for i in range(1, num_of_passwords + 1):
 	flag_is_special_characters = is_special_characters()
 	flag_is_ambiguous_characters = is_ambiguous_characters()
 	list = data_generation()
+
 	for j in range(0, len_password):
 		rnd_num_len_list = random.randrange(0, len(list))
 		len_list_in_list = len(list[rnd_num_len_list])
+
 		if len_list_in_list == 2:
 			get_first_num = list[rnd_num_len_list][0]
 			get_second_num = list[rnd_num_len_list][1]
@@ -131,6 +141,7 @@ for i in range(1, num_of_passwords + 1):
 			else:
 				forming_random_numb_from_the_range = random.randrange(get_first_num, get_second_num + 1)
 			chars += chr(forming_random_numb_from_the_range)
+
 		if len_list_in_list == 4:
 			get_rnd_num_list_in_list = random.randrange(0, len_list_in_list)
 			get_first_num = list[rnd_num_len_list][get_rnd_num_list_in_list][0]
@@ -140,8 +151,10 @@ for i in range(1, num_of_passwords + 1):
 				forming_random_numb_from_the_range = random.randrange(get_first_num, get_second_num + 1)
 				if forming_random_numb_from_the_range in bad_characters:
 					continue
+
 				else:
 					break
+
 			else:
 				forming_random_numb_from_the_range = random.randrange(get_first_num, get_second_num + 1)
 
@@ -150,8 +163,6 @@ for i in range(1, num_of_passwords + 1):
 	list_password.append(chars)
 	chars = ""
 
-
-
-for n in range(0,len(list_password)):
-	print(f"{n+1} номер вашего пароля.\n"
-		  f"Пароль под номером {n+1} - {list_password[n]}")
+for n in range(0, len(list_password)):
+	print(f"{n + 1} номер вашего пароля.\n"
+		  f"Пароль под номером {n + 1} - {list_password[n]}")

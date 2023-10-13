@@ -5,7 +5,7 @@ def forming_a_shift():
 	for i in range(len(list_org_text)):
 		total = 0
 		for j in range(len(list_org_text[i])):
-			if list_org_text[i][j] not in '!.,"':
+			if list_org_text[i][j] not in ''' ! "#$%&’()*+,-./':;<=>?@[]^_`{|}~.''':
 				total += 1
 		list_total.append(total)
 
@@ -33,6 +33,8 @@ def classic_caesar_cipher(list_total, org_text):
 					new_word += chr(letter_ord + range_number)
 			else:
 				new_word += word[i]
+
+
 		new_text.append(new_word)
 	return new_text
 

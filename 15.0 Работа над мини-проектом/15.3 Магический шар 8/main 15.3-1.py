@@ -20,11 +20,12 @@ def answers():
 	need_response = need_list[random_num_answer]
 	return need_response
 
+
 def start_game():
 	print("Привет Мир, я магический шар, и я знаю ответ на любой твой вопрос.")
 	print("Как тебя зовут?")
 	name = str(input())
-	print(f"Привет {name}!")
+	print(f"Привет {name.capitalize()}!")
 	return name
 
 
@@ -36,7 +37,7 @@ def restart_game(name_user, total_restart):
 			print(f"{name_user.capitalize()}, хочешь еще получить ответ на любой твой вопрос?")
 		answer_user = str(input())
 		answer_user_Yes = False
-		list_answer_yes = ["Да", "да", "yes", "yep", "Yes", "y", "l", "lf", "L", "Y"]
+		list_answer_yes = ["Да", "да", "yes", "yep", "Yes", "y", "l", "lf", "L", "Y", "д", "дя", "Дя"]
 		list_answer_no = ["Нет", "нет", "not", "nop", "Not", "ytn", "не"]
 		if answer_user in list_answer_yes:
 			answer_user_Yes = True
@@ -50,18 +51,19 @@ def restart_game(name_user, total_restart):
 
 
 def answer_to_questions(name_user):
-	print(f"{name_user}! На какой вопрос ты хочешь получить ответ?")
+	print(f"{name_user.capitalize()}! На какой вопрос ты хочешь получить ответ?")
 	print("Напиши мне свой вопрос ...")
 	question_user = str(input())
-	time.sleep(2)
+	time.sleep(1)
 	response = answers()
-	return print(f"{name_user}, {response.lower()}")
- 
+	return print(f"{name_user.capitalize()}, {response.lower()}")
+
+
 name_user = start_game()
 total_restart = 0
 answer_user = restart_game(name_user, total_restart)
 total_restart += 1
 while answer_user == True:
 	answer_to_questions(name_user)
-	time.sleep(5)
+	time.sleep(3)
 	answer_user = restart_game(name_user, total_restart)
